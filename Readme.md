@@ -29,8 +29,20 @@ Tomemos el siguiente programa en Java que suma 3 números y cuenta si el resulta
 
 ``` java
 
-public class ThreeSum{	public static int count(int[] a){
-		// Count triples that sum to 0.		int N = a.length;		int cnt = 0;		for (int i = 0; i < N; i++)			for (int j = i+1; j < N; j++)				for (int k = j+1; k < N; k++)					if (a[i] + a[j] + a[k] == 0)						cnt++;		return cnt;	}}
+public class ThreeSum{
+	public static int count(int[] a){
+		// Count triples that sum to 0.
+		int N = a.length;
+		int cnt = 0;
+		for (int i = 0; i < N; i++)
+			for (int j = i+1; j < N; j++)
+				for (int k = j+1; k < N; k++)
+					if (a[i] + a[j] + a[k] == 0)
+						cnt++;
+		return cnt;
+	}
+
+}
 
 ```
 
@@ -44,17 +56,23 @@ Y como entrada tomaremos archivos que contienen números enteros aleatorios:
 Adicionalmente implementaremos un *Cronometro* que nos permitira determinar el tiempo de ejecucion de cualquier programa.
 
 ```java
-public class Stopwatch{	private final long start;
+public class Stopwatch{
+	private final long start;
 	public Stopwatch(){
 		start = System.currentTimeMillis();
 	}
-	public double elapsedTime(){		long now = System.currentTimeMillis();		return (now - start) / 1000.0;	}}
+	public double elapsedTime(){
+		long now = System.currentTimeMillis();
+		return (now - start) / 1000.0;
+	}
+}
 ```
 Descripción:
 
 | `public class StopWatch`  | Descripción |
 |--------------|---------|
-| `Stopwatch()` | Crear un cronometro || `double elapsedTime()` | Desplegar el tiempo desde la creación |
+| `Stopwatch()` | Crear un cronometro |
+| `double elapsedTime()` | Desplegar el tiempo desde la creación |
 
 La ejecucion de ambas clases se realiza con el siguiente codigo.
 
@@ -68,9 +86,15 @@ public static void main(String[] args)  {
 }
 ```
 
-El codigo completo se encuentra [aquí](https://github.com/monkeythecoder/AlgorithmsSedgewick/blob/master/1-Fundamentals/1-4-AnalysisOfAlgorithms/ThreeSum.java).
+El código completo se encuentra [aquí](https://raw.githubusercontent.com/monkeythecoder/AlgoritmosLISDER/master/1-Fundamentales/1-4-AnalysisOfAlgorithms/ThreeSum.java).
 
-Posteriormente, construiremos dos graficas en las cual el eje X sea el numero de elementos analizados y el eje de Y sea el tiempo de ejecucion, con la unica diferencia de que la primera es una representación estandar y en la segunda se aplica una escala [log-log](http://es.wikipedia.org/wiki/Representaci%C3%B3n_logar%C3%ADtmica) en ambos lados.
+Ejecutamos el programa y observamos los distintos tiempos para cada uno de los archivos. 
+
+![Tiempo]()
+
+### Analisis
+
+Para ayudarnos a encontrar el tiempo de ejecución de nuestro programa, construiremos dos graficas en las cuales el eje *X* sea el numero de elementos analizados y el eje de *Y* sea el tiempo de ejecucion, con la unica diferencia de que la primera es una representación estandar y en la segunda se aplica una escala [log-log](http://es.wikipedia.org/wiki/Representaci%C3%B3n_logar%C3%ADtmica) en ambos lados.
 
 ![Grafica](https://raw.githubusercontent.com/monkeythecoder/AlgorithmsSedgewick/master/img/Captura%20de%20pantalla%202015-02-23%20a%20las%2016.48.29.png)
 
@@ -167,68 +191,38 @@ Uno de nuestras principales razones para estudiar el orden de los algoritmos es 
 Existen dos estudios posibles sobre el tiempo:
 
 - Uno que proporciona una medida *teorica* (a priori), que que consiste en obtener una función que acote (por arriba o por abajo) el tiempo de ejecución del algoritmo para unos valores de entrada dados.
-- Y otro que ofrece una medida real (a posteriori), consistente en medir el tiempo de ejecución del algoritmo para unos valores de entrada dados y en unordenador concreto
+- Y otro que ofrece una medida real (a posteriori), consistente en medir el tiempo de ejecución del algoritmo para unos valores de entrada dados y en un ordenador concreto
+## Arboles de cobertura mínima: *Un algoritmo veloz*
 
+La Teora de Grafos es en sí misma es una fuente rica de problemas que representan un reto para resolverlas utilizando una computadora. No muchos de los problemas de esta teoría pareen tener algun algoritmo que los resuelva en *tiempo polinomial*.
+
+De entre los problemas bien conoidos y ya resueltos, se encuentra la busqueda de un árbol de obertura mínima para una grafo. Especilamente, dado una grafo *G*, on aristas de varias longitudes, el problema es encontrar un arbol *T* en *G* tal que:
+
+- *T* "cubra" *G*, es deir, todos los vertices de *G* se encuentren en *T*.
+- *T* tiene la longitud mínima total, sujeto a la ondiion anterior.
+
+En la siguiente imagen se muestra un árbol
 
 # Glosario
 
-- **Ensayo y error** : Consiste en actuar hasta que algo
-funcione. Puede tomar mucho tiempo y no es seguro
-que se llegue a una solución. Es una estrategia
-apropiada cuando las soluciones posibles son pocas
-y se pueden probar todas, empezando por la que
-ofrece mayor probabilidad de resolver el problema.
-Por ejemplo, una bombilla que no prende: revisar la
-bombilla, verificar la corriente eléctrica, verificar el
-interruptor.
+- **Ensayo y error** : Consiste en actuar hasta que algo funcione. Puede tomar mucho tiempo y no es seguro que se llegue a una solución. Es una estrategia apropiada cuando las soluciones posibles son pocas y se pueden probar todas, empezando por la que ofrece mayor probabilidad de resolver el problema.
+Por ejemplo, una bombilla que no prende: revisar la bombilla, verificar la corriente eléctrica, verificar el interruptor.
 
-- **Iluminación** : Implica la súbita conciencia de una
-solución que sea viable. Es muy utilizado el modelo
-de cuatro pasos formulado por Wallas (1921):
+- **Iluminación** : Implica la súbita conciencia de una solución que sea viable. Es muy utilizado el modelo de cuatro pasos formulado por Wallas (1921):
 preparación, incubación, iluminación y verificación.
-Estos cuatro momentos también se conocen como
-proceso creativo. Algunas investigaciones han
-determinado que cuando en el periodo de incubación
-se incluye una interrupción en el trabajo sobre un
-problema se logran mejores resultados desde el
-punto de vista de la creatividad. La incubación ayuda
-a "olvidar" falsas pistas, mientras que no hacer
-interrupciones o descansos puede hacer que la
-persona que trata de encontrar una solución creativa
-se estanque en estrategias inapropiadas.
+Estos cuatro momentos también se conocen como proceso creativo. Algunas investigaciones han determinado que cuando en el periodo de incubación se incluye una interrupción en el trabajo sobre un problema se logran mejores resultados desde el punto de vista de la creatividad. La incubación ayuda a "olvidar" falsas pistas, mientras que no hacer interrupciones o descansos puede hacer que la persona que trata de encontrar una solución creativa se estanque en estrategias inapropiadas.
 
-- **Heurística** : Se basa en la utilización de reglas
-empíricas para llegar a una solución. El método
-heurístico conocido como “IDEAL”, formulado por
-Bransford y Stein (1984), incluye cinco pasos:
+- **Heurística** : Se basa en la utilización de reglas empíricas para llegar a una solución. El método heurístico conocido como “IDEAL”, formulado por Bransford y Stein (1984), incluye cinco pasos:
 
 	- Identificar el problema
 	- Definir y presentar el problema
 	- Explorar las estrategias viables
 	- Avanzar en las estrategias
 	- Lograr la solución
-	- Volver para evaluar los efectos de las actividades (Bransford &
-Stein, 1984).
+	- Volver para evaluar los efectos de las actividades (Bransford & Stein, 1984).
 
-- **Algoritmos** :  Consiste en aplicar adecuadamente
-una serie de pasos detallados que aseguran una
-solución correcta. Por lo general, cada algoritmo es
-específico de un dominio del conocimiento.
+- **Algoritmos** :  Consiste en aplicar adecuadamente una serie de pasos detallados que aseguran una solución correcta. Por lo general, cada algoritmo es específico de un dominio del conocimiento.
 
-- **Razonamiento analógico** : Se apoya en el
-establecimiento de una analogía entre una situación
-que resulte familiar y la situación problema. Requiere
-conocimientos suficientes de ambas situaciones.  
-
-## Arboles de cobertura mínima: *Un algoritmo veloz*
-
-La Teora de Grafos es en sí misma es una fuente rica
-de problemas que representan un reto para resolverlas utilizando una computadora. No muchos de los problemas de esta teoría pareen tener algun
-algoritmo que los resuelva en *tiempo polinomial*.
-
-De entre los problemas bien conoidos y ya resueltos, se encuentra la busqueda de un árbol de obertura mínima para una grafo. Especilamente, dado una grafo *G*, on aristas de varias longitudes, el problema es encontrar un arbol *T* en *G* tal que:
-
-- *T* "cubra" *G*, es deir, todos los vertices de *G* se encuentren en *T*.
-- *T* tiene la longitud mínima total, sujeto a la ondiion anterior.
+- **Razonamiento analógico** : Se apoya en el establecimiento de una analogía entre una situación que resulte familiar y la situación problema. Requiere conocimientos suficientes de ambas situaciones.  
 
 [^1]: Algoritms (Four edition). Sedgewick, Wayne.
