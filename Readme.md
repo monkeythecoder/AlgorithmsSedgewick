@@ -199,11 +199,11 @@ Una vez vista la forma de calcular el tiempo de ejecución *T* de un algoritmo, 
 
 En las siguientes definiciones **N** describira el conjunto de los números naturales y **R** el de los reales.
 
-#### Cota Superior. Notación O
+### Cota Superior. Notación O
 
 Dada una función *f*, queremos estudiar aquellas funciones *g* que a lo sumo crecen tan deprisa como *f*. Al conjunto de tales funciones se le llama cota superior de *f* y lo denominamos *O(f)*. Conociendo la cota superior de un algoritmo podemos asegurar que, en ningún caso, el tiempo empleado será de un orden superior al de la cota.
 
-##### Definición
+#### Definición
 Sea f: N→[0,∞). Se define el conjunto de funciones de orden *O* (llamado Omicron) de *f* como:
 	*O(f) = {g: N→[0,∞)  ∃c∈R, c>0, ∃n0∈N • g(n) ≤ cf(n) ∀n ≥ n0}.*
 
@@ -227,9 +227,36 @@ Las propiedades de *O* son las siguientes.
 6. Regla de la suma: Si f1 ∈O(g) y f2 ∈O(h) ⇒ f1 + f2 ∈O(max(g,h)).
 7. Regla del producto: Si f1 ∈O(g) y f2 ∈O(h) ⇒ f1·f2 ∈O(g·h).
 8. Si existe lim n→∞: f(n)/g(n) = k, dependiendo de los valores que tome k obtenemos:
-	a) Si k ≠0 y k < ∞ entonces O(f) = O(g).
-	b) Si k = 0 entonces f ∈O(g), es decir, O(f) ⊂ O(g), pero sin embargo se
+	- a) Si k ≠0 y k < ∞ entonces O(f) = O(g).
+	- b) Si k = 0 entonces f ∈O(g), es decir, O(f) ⊂ O(g), pero sin embargo se
 verifica que g ∉O(f).
+
+Obsérvese la importancia que tiene el que exista tal límite, pues si no existiese (o fuera infinito) no podría realizarse tal afirmación.
+
+De las propiedades anteriores se deduce que la relación ~O, definida por f ~O g si y sólo si O(f) = O(g), es una relación de equivalencia. Siempre escogeremos el representante más sencillo para cada clase; así los órdenes de complejidad constante serán expresados por O(1), los lineales por O(n), etc.
+
+### Cota Inferior. Notación Ω
+
+Dada una función f, queremos estudiar aquellas funciones g que a lo sumo crecen
+tan lentamente como f. Al conjunto de tales funciones se le llama cota inferior de f y lo denominamos Ω(f). Conociendo la cota inferior de un algoritmo podemos asegurar que, en ningún caso, el tiempo empleado será de un orden inferior al de la cota.
+
+#### Definición
+
+Sea f: N→[0,∞). Se define el conjunto de funciones de orden Ω (Omega) de f
+como:
+	Ω(f) = {g:N →[0,∞)  ∃c∈R , c>0, ∃n0∈ N• g(n) ≥ cf(n) ∀n ≥ n0}.
+
+Diremos que una función t:N →[0,∞) es de orden Ω de f si t ∈Ω(f).
+Intuitivamente, *t* ∈ Ω(f) indica que t está acotada inferiormente por algún
+múltiplo de *f*. Normalmente estaremos interesados en la mayor función *f* tal que *t*
+pertenezca a Ω(f), a la que denominaremos su cota inferior.
+
+Obtener buenas cotas inferiores es en general muy difícil, aunque siempre existe
+una cota inferior trivial para cualquier algoritmo: leer los datos y
+luego escribirlos, de forma que ésa sería una primera cota inferior. Así, para
+ordenar *n* números una cota inferior sería *n*, y para multiplicar dos matrices de
+orden *n* sería *n*; sin embargo, los mejores algoritmos conocidos son de órdenes
+*nlogn* y *n^2.8* respectivamente.
 
 # Glosario
 
