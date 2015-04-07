@@ -90,9 +90,9 @@ El código completo se encuentra [aquí](https://raw.githubusercontent.com/monke
 
 Ejecutamos el programa y observamos los distintos tiempos para cada uno de los archivos. 
 
-![Tiempo]()
+![Tiempo](https://raw.githubusercontent.com/monkeythecoder/AlgoritmosLISDER/master/img/Captura%20de%20pantalla%20de%202015-04-07%2013%3A31%3A26.png)
 
-### Analisis
+### Análisis
 
 Para ayudarnos a encontrar el tiempo de ejecución de nuestro programa, construiremos dos graficas en las cuales el eje *X* sea el numero de elementos analizados y el eje de *Y* sea el tiempo de ejecucion, con la unica diferencia de que la primera es una representación estandar y en la segunda se aplica una escala [log-log](http://es.wikipedia.org/wiki/Representaci%C3%B3n_logar%C3%ADtmica) en ambos lados.
 
@@ -109,7 +109,7 @@ de tal manera `` a = 9.98x10^11 ``, finalmente con esto obtenemos la ecuación $
 
 Existen otros metodos estadisticos para hacer un analisis mas profundo y encontrar ``à`` y el exponente ``b``, pero como ejemplo introductorio es suficiente el metodo ilustrado aqui.
 
-##Análisis de algoritmos
+### Hipótesis del orden de crecimiento
 
 El análisis de los algoritmos busca responder preguntas del tipo:
 
