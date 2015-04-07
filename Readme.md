@@ -96,7 +96,7 @@ Ejecutamos el programa y observamos los distintos tiempos para cada uno de los a
 
 Para ayudarnos a encontrar el tiempo de ejecución de nuestro programa, construiremos dos graficas en las cuales el eje *X* sea el numero de elementos analizados y el eje de *Y* sea el tiempo de ejecucion, con la unica diferencia de que la primera es una representación estandar y en la segunda se aplica una escala [log-log](http://es.wikipedia.org/wiki/Representaci%C3%B3n_logar%C3%ADtmica) en ambos lados.
 
-![Grafica](https://raw.githubusercontent.com/monkeythecoder/AlgorithmsSedgewick/master/img/Captura%20de%20pantalla%202015-02-23%20a%20las%2016.48.29.png)
+![Grafica](https://raw.githubusercontent.com/monkeythecoder/AlgoritmosLISDER/master/img/Captura%20de%20pantalla%202015-02-23%20a%20las%2016.48.29.png)
 
 Lo siguiente es hacer un breve analisis sobre el resultado: Podemos observar, en la grafica log-log, una pendiente con valor de ```3``, la ecuacion de dicha linea es $$lg(T(N)) = lg N + lg a$$
 
@@ -125,7 +125,7 @@ El primero esta en función del ordenador, el compilador y el sistema operativo 
 
 En la siguiente imagen podemos visualizar la frecuencia de ejecución del programa ``ThreeSum``
 
-![Frecuencia](https://raw.githubusercontent.com/monkeythecoder/AlgorithmsSedgewick/master/img/Captura%20de%20pantalla%202015-04-02%20a%20las%2011.35.41.png)
+![Frecuencia](https://raw.githubusercontent.com/monkeythecoder/AlgoritmosLISDER/master/img/Captura%20de%20pantalla%202015-04-02%20a%20las%2011.35.41.png)
 
 Realizando un analisis de la frecuencia de las instrucciones tenemos la siguiente tabla
 
