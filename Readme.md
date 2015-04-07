@@ -107,7 +107,7 @@ el tiempo de ejecución. Podemos utilizar uno de los datos graficados para encon
 $$T(8000) = 51.1 = a8000^3$$
 de tal manera `` a = 9.98x10^11 ``, finalmente con esto obtenemos la ecuación $$ T(N) = 9.98X10^11 N^3 $$ que nos ayuda a predecir tiempos de ejecución mas grandes para ``N``.
 
-Existen otros metodos estadisticos para hacer un analisis mas profundo y encontrar ``à`` y el exponente ``b``, pero como ejemplo introductorio es suficiente el metodo ilustrado aqui.
+Existen otros metodos estadisticos para hacer un analisis mas profundo y encontrar ``a`` y el exponente ``b``, pero como ejemplo introductorio es suficiente el metodo ilustrado aqui.
 
 ### Hipótesis del orden de crecimiento
 
@@ -194,14 +194,42 @@ Existen dos estudios posibles sobre el tiempo:
 - Y otro que ofrece una medida real (a posteriori), consistente en medir el tiempo de ejecución del algoritmo para unos valores de entrada dados y en un ordenador concreto
 ## Arboles de cobertura mínima: *Un algoritmo veloz*
 
-La Teora de Grafos es en sí misma es una fuente rica de problemas que representan un reto para resolverlas utilizando una computadora. No muchos de los problemas de esta teoría pareen tener algun algoritmo que los resuelva en *tiempo polinomial*.
+## Notacion O
+Una vez vista la forma de calcular el tiempo de ejecución *T* de un algoritmo, nuestro propósito es intentar clasificar dichas funciones de forma que podamos compararlas. para ello, se definen clases de equivalencia, correspondientes a las funciones que "crecen de la misma forma".
 
-De entre los problemas bien conoidos y ya resueltos, se encuentra la busqueda de un árbol de obertura mínima para una grafo. Especilamente, dado una grafo *G*, on aristas de varias longitudes, el problema es encontrar un arbol *T* en *G* tal que:
+En las siguientes definiciones **N** describira el conjunto de los números naturales y **R** el de los reales.
 
-- *T* "cubra" *G*, es deir, todos los vertices de *G* se encuentren en *T*.
-- *T* tiene la longitud mínima total, sujeto a la ondiion anterior.
+#### Cota Superior. Notación O
 
-En la siguiente imagen se muestra un árbol
+Dada una función *f*, queremos estudiar aquellas funciones *g* que a lo sumo crecen tan deprisa como *f*. Al conjunto de tales funciones se le llama cota superior de *f* y lo denominamos *O(f)*. Conociendo la cota superior de un algoritmo podemos asegurar que, en ningún caso, el tiempo empleado será de un orden superior al de la cota.
+
+##### Definición
+Sea f: N→[0,∞). Se define el conjunto de funciones de orden *O* (llamado Omicron) de *f* como:
+	*O(f) = {g: N→[0,∞)  ∃c∈R, c>0, ∃n0∈N • g(n) ≤ cf(n) ∀n ≥ n0}.*
+
+Diremos que una función t: *N →[0,∞)** es de orden *O* de *f si t ∈O(f).
+Intuitivamente, t ∈ O(f) indica que t está acotada superiormente por algún
+múltiplo de f. Normalmente estaremos interesados en la menor función f tal que t
+pertenezca a O(f).
+En el ejemplo del algoritmo Buscar analizado anteriormente obtenemos que su
+tiempo de ejecución en el mejor caso es O(1), mientras que sus tiempos de
+ejecución para los casos peor y medio son O(n).
+
+#### Propiedades de *O*
+
+Las propiedades de *O* son las siguientes.
+
+1. Para cualquier función f se tiene que f ∈O(f).
+2. f ∈O(g) ⇒ O(f) ⊂ O(g).
+3. O(f) = O(g) ⇔ f ∈O(g) y g ∈O(f).
+4. Si f ∈O(g) y g ∈O(h) ⇒ f ∈O(h).
+5. Si f ∈O(g) y f ∈O(h) ⇒ f ∈O(min(g,h)).
+6. Regla de la suma: Si f1 ∈O(g) y f2 ∈O(h) ⇒ f1 + f2 ∈O(max(g,h)).
+7. Regla del producto: Si f1 ∈O(g) y f2 ∈O(h) ⇒ f1·f2 ∈O(g·h).
+8. Si existe lim n→∞: f(n)/g(n) = k, dependiendo de los valores que tome k obtenemos:
+	a) Si k ≠0 y k < ∞ entonces O(f) = O(g).
+	b) Si k = 0 entonces f ∈O(g), es decir, O(f) ⊂ O(g), pero sin embargo se
+verifica que g ∉O(f).
 
 # Glosario
 
