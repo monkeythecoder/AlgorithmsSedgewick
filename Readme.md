@@ -258,6 +258,17 @@ ordenar *n* números una cota inferior sería *n*, y para multiplicar dos matric
 orden *n* sería *n*; sin embargo, los mejores algoritmos conocidos son de órdenes
 *nlogn* y *n^2.8* respectivamente.
 
+#### Propiedades de Ω
+
+Veamos las propiedades de la cota inferior Ω.
+
+1. Para cualquier función f se tiene que f ∈Ω(f).
+2. f ∈Ω(g) ⇒ Ω(f) ⊂ Ω(g).
+3. Ω(f) = Ω(g) ⇔ f ∈Ω(g) y g ∈Ω(f).
+4. Si f ∈Ω(g) y g ∈Ω(h) ⇒ f ∈Ω(h).
+5. Si f ∈Ω(g) y f ∈Ω(h) ⇒ f ∈Ω(max(g,h)).
+6. Regla de la suma: Si f1 ∈Ω(g) y f2 ∈Ω(h) ⇒ f1 + f2 ∈Ω(g + h).
+
 # Glosario
 
 - **Ensayo y error** : Consiste en actuar hasta que algo funcione. Puede tomar mucho tiempo y no es seguro que se llegue a una solución. Es una estrategia apropiada cuando las soluciones posibles son pocas y se pueden probar todas, empezando por la que ofrece mayor probabilidad de resolver el problema.
